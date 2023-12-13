@@ -47,8 +47,8 @@ class Pagination extends StatefulWidget {
   final ButtonStyle activeBtnStyle;
   final TextStyle inactiveTextStyle;
   final ButtonStyle inactiveBtnStyle;
-  final Icon? previousIcon;
-  final Icon? nextIcon;
+  final Widget? previousIcon;
+  final Widget? nextIcon;
   final double? spacing;
 
   @override
@@ -98,12 +98,13 @@ class _PaginationState extends State<Pagination> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         /// Previous button
-        IconButton(
-          icon: widget.previousIcon ?? const Icon(Icons.arrow_back_ios),
-          onPressed: widget.selectedPage > 1
-              ? () => widget.onPageChanged(widget.selectedPage - 1)
-              : null,
-        ),
+        // IconButton(
+        //   icon: widget.previousIcon ?? const Icon(Icons.arrow_back_ios),
+        //   onPressed: widget.selectedPage > 1
+        //       ? () => widget.onPageChanged(widget.selectedPage - 1)
+        //       : null,
+        // ),
+        if (widget.previousIcon != null) widget.previousIcon!,
 
         /// loop through the pages and show the page buttons
         for (int i = _startPage; i <= _endPage; i++)
@@ -129,12 +130,13 @@ class _PaginationState extends State<Pagination> {
         ),
 
         /// Next button
-        IconButton(
-          icon: widget.nextIcon ?? const Icon(Icons.arrow_forward_ios),
-          onPressed: widget.selectedPage < widget.numOfPages
-              ? () => widget.onPageChanged(widget.selectedPage + 1)
-              : null,
-        ),
+        if (widget.nextIcon != null) widget.nextIcon!
+        // IconButton(
+        //   icon: widget.nextIcon ?? const Icon(Icons.arrow_forward_ios),
+        //   onPressed: widget.selectedPage < widget.numOfPages
+        //       ? () => widget.onPageChanged(widget.selectedPage + 1)
+        //       : null,
+        // ),
       ],
     );
   }
