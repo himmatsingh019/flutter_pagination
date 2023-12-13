@@ -3,41 +3,45 @@ library pagination;
 import 'package:flutter/material.dart';
 
 class Pagination extends StatefulWidget {
-  const Pagination(
-      {super.key,
+  const Pagination({
+    super.key,
 
-      /// Total number of pages
-      required this.numOfPages,
+    /// Total number of pages
+    required this.numOfPages,
 
-      /// Current selected page
-      required this.selectedPage,
+    /// Current selected page
+    required this.selectedPage,
 
-      /// Number of pages visible in the widget between the previous and next buttons
-      required this.pagesVisible,
+    /// Number of pages visible in the widget between the previous and next buttons
+    required this.pagesVisible,
 
-      /// Callback function when a page is selected
-      required this.onPageChanged,
+    /// Callback function when a page is selected
+    required this.onPageChanged,
 
-      /// Style for the active page text
-      required this.activeTextStyle,
+    /// Style for the active page text
+    required this.activeTextStyle,
 
-      /// Style for the active page button
-      required this.activeBtnStyle,
+    /// Style for the active page button
+    required this.activeBtnStyle,
 
-      /// Style for the inactive page text
-      required this.inactiveTextStyle,
+    /// Style for the inactive page text
+    required this.inactiveTextStyle,
 
-      /// Style for the inactive page button
-      required this.inactiveBtnStyle,
+    /// Style for the inactive page button
+    required this.inactiveBtnStyle,
 
-      /// Icon for the previous button
-      this.previousIcon,
+    /// Icon for the previous button
+    this.previousIcon,
 
-      /// Icon for the next button
-      this.nextIcon,
+    /// Icon for the next button
+    this.nextIcon,
 
-      /// Spacing between the individual page buttons
-      this.spacing});
+    /// Spacing between the individual page buttons
+    this.spacing,
+
+    /// MainAxisAlignment
+    this.mainAxisAlignment,
+  });
 
   final int numOfPages;
   final int selectedPage;
@@ -50,6 +54,7 @@ class Pagination extends StatefulWidget {
   final Widget? previousIcon;
   final Widget? nextIcon;
   final double? spacing;
+  final MainAxisAlignment? mainAxisAlignment;
 
   @override
   State<Pagination> createState() => _PaginationState();
@@ -95,7 +100,7 @@ class _PaginationState extends State<Pagination> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center,
       children: [
         /// Previous button
         // IconButton(
