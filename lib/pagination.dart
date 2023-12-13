@@ -104,7 +104,13 @@ class _PaginationState extends State<Pagination> {
         //       ? () => widget.onPageChanged(widget.selectedPage - 1)
         //       : null,
         // ),
-        if (widget.previousIcon != null) widget.previousIcon!,
+        if (widget.previousIcon != null)
+          InkWell(
+            onTap: widget.selectedPage > 1
+                ? () => widget.onPageChanged(widget.selectedPage - 1)
+                : null,
+            child: widget.previousIcon,
+          ),
 
         /// loop through the pages and show the page buttons
         for (int i = _startPage; i <= _endPage; i++)
@@ -130,7 +136,13 @@ class _PaginationState extends State<Pagination> {
         ),
 
         /// Next button
-        if (widget.nextIcon != null) widget.nextIcon!
+        if (widget.nextIcon != null)
+          InkWell(
+            onTap: widget.selectedPage < widget.numOfPages
+                ? () => widget.onPageChanged(widget.selectedPage + 1)
+                : null,
+            child: widget.nextIcon,
+          )
         // IconButton(
         //   icon: widget.nextIcon ?? const Icon(Icons.arrow_forward_ios),
         //   onPressed: widget.selectedPage < widget.numOfPages
